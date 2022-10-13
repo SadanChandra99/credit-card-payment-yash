@@ -1,0 +1,22 @@
+version: '2.0'
+services:
+  app:
+    image: yyyashhh/credit-card-app:1.2
+    build: 
+      context: .
+    ports:
+      - "8081:8080"
+    container_name: creditcardcayment-container
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Collegevali@1997
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  db:
+    image: postgres
+    container_name: postgrescontainer
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Collegevali@1997
